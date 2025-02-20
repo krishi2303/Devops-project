@@ -66,15 +66,7 @@ devsecops-project/
 
 ---
 
-## Getting Started
-
-### Prerequisites
-- Node.js (v16 or later)
-- Docker (for containerization)
-- Kubernetes CLI (kubectl)
-- Git
-
-### Installation
+## Installation
 1. **Clone the Repository:**
    ```bash
    git clone <repository-url>
@@ -143,6 +135,39 @@ This project uses GitHub Actions for CI/CD automation. The workflow is defined i
 
 ---
 
+## Security Scanning
+### **Static Application Security Testing (SAST)**
+- **SonarQube**:
+  - Integrated into the CI/CD pipeline to analyze code for vulnerabilities.
+  - Run using:
+    ```bash
+    sonar-scanner -Dsonar.projectKey=devsecops -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000
+    ```
+
+### **Dynamic Application Security Testing (DAST)**
+- **OWASP ZAP**:
+  - Scans running applications for security vulnerabilities.
+  - Run using:
+    ```bash
+    zap-cli quick-scan --self-contained --start-options "-config api.disablekey=true" http://localhost:3000
+    ```
+
+### **Container Security Scanning**
+- **Trivy**:
+  - Scans container images for vulnerabilities.
+  - Run using:
+    ```bash
+    trivy image <image-name>
+    ```
+- **Grype**:
+  - Another security scanner for container images.
+  - Run using:
+    ```bash
+    grype <image-name>
+    ```
+
+---
+
 ## Monitoring and Logging
 1. **Monitoring:**
    - Use tools like Prometheus or Grafana to visualize metrics.
@@ -169,3 +194,4 @@ This project is licensed under the [MIT License](LICENSE).
 For any questions or feedback, feel free to reach out:
 - **Email:** siddharthdileep2003@gmail.com
 - **GitHub:** [(https://github.com/sidnair19/devsecops.git)]
+
